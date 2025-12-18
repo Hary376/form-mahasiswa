@@ -1,224 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Mahasiswa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Mahasiswa</title>
 
-    <style>
-        body {
-            background-color: goldenrod;
-            margin: 20px;
-            font-family: Arial;
-        }
-        table {
-            margin-top: 20px;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: center;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .form-table td {
-            border: none;
-        }
-        #btnHapusSemua {
-            background: red;
-            color: white;
-            padding: 7px 15px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        #btnHapusSemua:hover {
-            background: darkred;
-        }
-        .btn-hapus {
-            background: crimson;
-            color: #fff;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-hapus:hover {
-            background: darkred;
-        }
-    </style>
+<style>
+*{box-sizing:border-box;font-family:"Segoe UI",sans-serif}
+body{background:#f3f4f6;padding:30px}
+
+/* Card */
+.container{
+max-width:1000px;margin:auto;background:#fff;padding:25px;
+border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.1)
+}
+
+h1,h2{text-align:center;color:#1f2937}
+
+/* Form */
+.form-table td{padding:10px}
+input,textarea,select{
+width:100%;padding:10px;border-radius:8px;
+border:1px solid #d1d5db;transition:.3s
+}
+input:focus,textarea:focus,select:focus{border-color:#2563eb}
+
+/* Buttons */
+button{
+padding:10px 15px;border:none;border-radius:8px;
+cursor:pointer;font-weight:600;transition:.3s
+}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-primary:hover{background:#1e40af;transform:translateY(-2px)}
+.btn-secondary{background:#e5e7eb}
+.btn-secondary:hover{background:#d1d5db}
+
+.btn-danger{background:#ef4444;color:white}
+.btn-danger:hover{background:#dc2626}
+
+.btn-edit{background:#10b981;color:white}
+.btn-edit:hover{background:#059669}
+
+/* Table */
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th{background:#2563eb;color:white;padding:12px}
+td{padding:10px;text-align:center;border-bottom:1px solid #e5e7eb}
+tr:hover{background:#f9fafb}
+
+/* Search */
+.search-box{
+margin:20px 0;
+display:flex;gap:10px
+}
+
+/* Export */
+.export{
+display:flex;gap:10px;justify-content:center;margin-top:15px
+}
+</style>
 </head>
+
 <body>
 
+<div class="container">
 <h1>FORMULIR MAHASISWA</h1>
 
-<!-- FORM -->
 <table class="form-table">
-    <tr>
-        <td>Nama</td>
-        <td><input type="text" id="nama"></td>
-    </tr>
+<tr><td>Nama</td><td><input id="nama"></td></tr>
+<tr><td>Alamat</td><td><input id="alamat"></td></tr>
+<tr><td>NIM</td><td><input id="nim" type="number"></td></tr>
 
-    <tr>
-        <td>Alamat</td>
-        <td><input type="text" id="alamat"></td>
-    </tr>
+<tr>
+<td>Jenis Kelamin</td>
+<td>
+<input type="radio" name="jk" value="Laki-Laki"> Laki-Laki
+<input type="radio" name="jk" value="Perempuan"> Perempuan
+</td>
+</tr>
 
-    <tr>
-        <td>NIM</td>
-        <td><input type="number" id="nim"></td>
-    </tr>
+<tr>
+<td>Hobi</td>
+<td>
+<input type="checkbox" name="hobi" value="Bola"> Bola
+<input type="checkbox" name="hobi" value="Game"> Game
+</td>
+</tr>
 
-    <tr>
-        <td>Jenis Kelamin</td>
-        <td>
-            <input type="radio" name="jk" value="Laki-Laki"> Laki-Laki
-            <input type="radio" name="jk" value="Perempuan"> Perempuan
-        </td>
-    </tr>
+<tr>
+<td>Jurusan</td>
+<td>
+<select id="jurusan">
+<option>Matematika</option>
+<option>Biologi</option>
+</select>
+</td>
+</tr>
 
-    <tr>
-        <td>Hobi</td>
-        <td>
-            <input type="checkbox" name="hobi" value="Bola"> Bola
-            <input type="checkbox" name="hobi" value="Game"> Game
-        </td>
-    </tr>
+<tr>
+<td>Deskripsi</td>
+<td><textarea id="deskripsi"></textarea></td>
+</tr>
 
-    <tr>
-        <td>Jurusan</td>
-        <td>
-            <select id="jurusan">
-                <option>Matematika</option>
-                <option>Biologi</option>
-            </select>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Deskripsi</td>
-        <td><textarea id="deskripsi"></textarea></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td>
-            <button onclick="simpan()">Simpan</button>
-            <button onclick="resetForm()">Reset</button>
-        </td>
-    </tr>
+<tr>
+<td></td>
+<td>
+<button class="btn-primary" onclick="simpan()">Simpan</button>
+<button class="btn-secondary" onclick="resetForm()">Reset</button>
+</td>
+</tr>
 </table>
 
-<!-- Tombol hapus semua -->
-<div style="text-align:center;">
-    <button id="btnHapusSemua" onclick="hapusSemuaData()">Hapus Semua Data</button>
+<!-- SEARCH -->
+<div class="search-box">
+<input placeholder="Cari data..." onkeyup="cari(this.value)">
 </div>
 
-<!-- TABEL DATA -->
+<!-- EXPORT -->
+<div class="export">
+<button class="btn-primary" onclick="exportExcel()">Export Excel</button>
+<button class="btn-secondary" onclick="window.print()">Export PDF</button>
+<button class="btn-danger" onclick="hapusSemua()">Hapus Semua</button>
+</div>
+
 <h2>Data Mahasiswa</h2>
-<table id="tabelData">
-    <thead>
-        <tr>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>NIM</th>
-            <th>Jenis Kelamin</th>
-            <th>Hobi</th>
-            <th>Jurusan</th>
-            <th>Deskripsi</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
+<table id="tabel">
+<thead>
+<tr>
+<th>Nama</th><th>Alamat</th><th>NIM</th>
+<th>JK</th><th>Hobi</th><th>Jurusan</th>
+<th>Deskripsi</th><th>Aksi</th>
+</tr>
+</thead>
+<tbody></tbody>
 </table>
+</div>
 
 <script>
-    // Load data saat halaman dibuka
-    window.onload = function() {
-        tampilkanData();
-    };
+let editIndex = null;
 
-    function simpan() {
-        let nama = document.getElementById("nama").value;
-        let alamat = document.getElementById("alamat").value;
-        let nim = document.getElementById("nim").value;
-        let jk = document.querySelector("input[name='jk']:checked")?.value || "";
-        let hobi = [...document.querySelectorAll("input[name='hobi']:checked")].map(h => h.value).join(", ");
-        let jurusan = document.getElementById("jurusan").value;
-        let deskripsi = document.getElementById("deskripsi").value;
+window.onload = tampilkan;
 
-        if (!nama || !nim) {
-            alert("Nama dan NIM wajib diisi!");
-            return;
-        }
+function simpan(){
+let data = JSON.parse(localStorage.getItem("mhs")) || [];
 
-        let data = JSON.parse(localStorage.getItem("mahasiswa")) || [];
+let obj = {
+nama:nama.value,
+alamat:alamat.value,
+nim:nim.value,
+jk:document.querySelector("input[name=jk]:checked")?.value || "",
+hobi:[...document.querySelectorAll("input[name=hobi]:checked")].map(h=>h.value).join(", "),
+jurusan:jurusan.value,
+deskripsi:deskripsi.value
+};
 
-        data.push({ nama, alamat, nim, jk, hobi, jurusan, deskripsi });
+if(!obj.nama || !obj.nim) return alert("Nama & NIM wajib!");
 
-        localStorage.setItem("mahasiswa", JSON.stringify(data));
+if(editIndex!==null){
+data[editIndex]=obj;
+editIndex=null;
+}else data.push(obj);
 
-        tampilkanData();
-        resetForm();
-    }
+localStorage.setItem("mhs",JSON.stringify(data));
+tampilkan();resetForm();
+}
 
-    function tampilkanData() {
-        let tbody = document.querySelector("#tabelData tbody");
-        tbody.innerHTML = "";
+function tampilkan(){
+let data = JSON.parse(localStorage.getItem("mhs")) || [];
+let tbody = document.querySelector("tbody");
+tbody.innerHTML="";
+data.forEach((m,i)=>{
+tbody.innerHTML+=`
+<tr>
+<td>${m.nama}</td><td>${m.alamat}</td><td>${m.nim}</td>
+<td>${m.jk}</td><td>${m.hobi}</td><td>${m.jurusan}</td>
+<td>${m.deskripsi}</td>
+<td>
+<button class="btn-edit" onclick="edit(${i})">Edit</button>
+<button class="btn-danger" onclick="hapus(${i})">Hapus</button>
+</td>
+</tr>`;
+});
+}
 
-        let data = JSON.parse(localStorage.getItem("mahasiswa")) || [];
+function edit(i){
+let d=JSON.parse(localStorage.getItem("mhs"))[i];
+nama.value=d.nama;alamat.value=d.alamat;nim.value=d.nim;
+jurusan.value=d.jurusan;deskripsi.value=d.deskripsi;
+document.querySelectorAll("input[name=jk]").forEach(r=>r.checked=r.value===d.jk);
+document.querySelectorAll("input[name=hobi]").forEach(c=>c.checked=d.hobi.includes(c.value));
+editIndex=i;
+}
 
-        data.forEach((m, index) => {
-            let tr = `<tr>
-                        <td>${m.nama}</td>
-                        <td>${m.alamat}</td>
-                        <td>${m.nim}</td>
-                        <td>${m.jk}</td>
-                        <td>${m.hobi}</td>
-                        <td>${m.jurusan}</td>
-                        <td>${m.deskripsi}</td>
-                        <td>
-                            <button class="btn-hapus" onclick="hapusData(${index})">Hapus</button>
-                        </td>
-                      </tr>`;
-            tbody.innerHTML += tr;
-        });
-    }
+function hapus(i){
+let d=JSON.parse(localStorage.getItem("mhs"));
+if(confirm("Hapus data?")){
+d.splice(i,1);
+localStorage.setItem("mhs",JSON.stringify(d));
+tampilkan();
+}
+}
 
-    function resetForm() {
-        document.getElementById("nama").value = "";
-        document.getElementById("alamat").value = "";
-        document.getElementById("nim").value = "";
-        document.getElementById("deskripsi").value = "";
-        document.querySelectorAll("input[name='jk']").forEach(i => i.checked = false);
-        document.querySelectorAll("input[name='hobi']").forEach(i => i.checked = false);
-    }
+function hapusSemua(){
+if(confirm("Hapus semua data?")){
+localStorage.removeItem("mhs");
+tampilkan();
+}
+}
 
-    // 🔥 Hapus 1 baris berdasarkan index
-    function hapusData(i) {
-        let data = JSON.parse(localStorage.getItem("mahasiswa")) || [];
+function resetForm(){
+document.querySelectorAll("input,textarea").forEach(i=>i.value="");
+document.querySelectorAll("input[type=radio],input[type=checkbox]").forEach(i=>i.checked=false);
+editIndex=null;
+}
 
-        if (confirm("Yakin ingin menghapus data ini?")) {
-            data.splice(i, 1); // hapus data ke-i
-            localStorage.setItem("mahasiswa", JSON.stringify(data));
-            tampilkanData();
-        }
-    }
+/* SEARCH */
+function cari(k){
+k=k.toLowerCase();
+document.querySelectorAll("tbody tr").forEach(r=>{
+r.style.display=r.innerText.toLowerCase().includes(k)?"":"none";
+});
+}
 
-    // 🔥 Hapus semua data
-    function hapusSemuaData() {
-        let konfirmasi = confirm("Yakin ingin menghapus semua data?");
-
-        if (konfirmasi) {
-            localStorage.removeItem("mahasiswa");
-            tampilkanData();
-            alert("Semua data berhasil dihapus!");
-        }
-    }
+/* EXPORT EXCEL */
+function exportExcel(){
+let table=document.getElementById("tabel").outerHTML;
+let blob=new Blob([table],{type:"application/vnd.ms-excel"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="data_mahasiswa.xls";
+a.click();
+}
 </script>
 
 </body>
